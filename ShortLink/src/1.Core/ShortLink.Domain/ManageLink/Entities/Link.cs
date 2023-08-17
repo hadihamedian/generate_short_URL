@@ -1,4 +1,4 @@
-﻿namespace ShortLink.Domain.GenerateLink.Entities
+﻿namespace ShortLink.Domain.ManageLink.Entities
 {
     public class Link : BaseEntity
     {
