@@ -6,6 +6,6 @@ namespace ShortLink.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class UrlController : ControllerBase
-    {
+    {  
     }
 }
