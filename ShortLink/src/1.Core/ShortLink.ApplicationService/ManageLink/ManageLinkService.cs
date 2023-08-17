@@ -4,11 +4,11 @@ using ShortLink.Utilities.Helpers;
 
 namespace ShortLink.ApplicationService.ManageLink
 {
-    public class ManageLink
+    public class ManageLinkService
     {
         private readonly ILinkRepository _linkRepository;
 
-        public ManageLink(ILinkRepository linkRepository) 
+        public ManageLinkService(ILinkRepository linkRepository) 
         {
             _linkRepository = linkRepository;
         }
@@ -31,11 +31,11 @@ namespace ShortLink.ApplicationService.ManageLink
             return link.Token;
         }
 
-        public string GetValidFullUrl(string token)
+        public string GetValidFullUrl(string tokenUrl)
         {
-            if (!Validation(token)) return string.Empty;
+            if (!Validation(tokenUrl)) return string.Empty;
 
-            var link = _linkRepository.GetByToken(token);
+            var link = _linkRepository.GetByToken(tokenUrl);
             
             if (link == null) return string.Empty;
 

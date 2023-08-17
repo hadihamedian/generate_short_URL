@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
+using System.Text.Unicode;
 
 namespace ShortLink.Utilities.Helpers
 {
@@ -24,7 +26,7 @@ namespace ShortLink.Utilities.Helpers
         {
             if (!IsValidUrl(baseUrl) || !IsValidUrl(url)) return string.Empty;
 
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string chars = Convert.ToBase64String(Encoding.UTF8.GetBytes(url)).ToString();
 
             Random random = new();
 
