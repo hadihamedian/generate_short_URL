@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLink.ApplicationServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLink.Contracts", "src\1.Core\ShortLink.Contracts\ShortLink.Contracts.csproj", "{C85097B3-779D-425F-A968-9BCAE171B488}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortLink.Utilities", "src\1.Core\ShortLink.Utilities\ShortLink.Utilities\ShortLink.Utilities.csproj", "{CBC08727-C86C-464A-8122-2E00A3E74DAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{C85097B3-779D-425F-A968-9BCAE171B488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C85097B3-779D-425F-A968-9BCAE171B488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C85097B3-779D-425F-A968-9BCAE171B488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC08727-C86C-464A-8122-2E00A3E74DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC08727-C86C-464A-8122-2E00A3E74DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC08727-C86C-464A-8122-2E00A3E74DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC08727-C86C-464A-8122-2E00A3E74DAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{911B9203-E723-496D-B76B-FB45A17DBCF3} = {5F29747F-ED21-4E3E-8F47-66BCC0A7D6A8}
 		{5DE2ED40-F83A-45A6-BA2F-657658A5956A} = {5F29747F-ED21-4E3E-8F47-66BCC0A7D6A8}
 		{C85097B3-779D-425F-A968-9BCAE171B488} = {5F29747F-ED21-4E3E-8F47-66BCC0A7D6A8}
+		{CBC08727-C86C-464A-8122-2E00A3E74DAD} = {5F29747F-ED21-4E3E-8F47-66BCC0A7D6A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86273827-FD7F-4D90-BE4A-F5D6B105026C}

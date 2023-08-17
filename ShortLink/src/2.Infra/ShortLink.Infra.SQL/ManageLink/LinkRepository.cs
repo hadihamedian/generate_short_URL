@@ -18,6 +18,12 @@ namespace ShortLink.Infra.SQL.ManageLink
             _dbContext.SaveChanges();
         }
 
-        public Link? Get(string shortUrl) => _dbContext.Links.SingleOrDefault(l => l.ShortUrl == shortUrl);
+        public Link? GetByToken(string token) => _dbContext.Links.SingleOrDefault(l => l.Token == token);
+
+        public void Update(Link link)
+        {
+            _dbContext.Links.Update(link);
+            _dbContext.SaveChanges();
+        }
     }
 }

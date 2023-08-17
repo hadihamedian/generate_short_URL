@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShortLink.Contracts\ShortLink.Contracts.csproj" />
+    <ProjectReference Include="..\ShortLink.Utilities\ShortLink.Utilities\ShortLink.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>
