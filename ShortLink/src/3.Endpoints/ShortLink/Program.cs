@@ -42,4 +42,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<LinkDbContext>();
+    context.Database.EnsureCreated();
+}
+
 app.Run();
