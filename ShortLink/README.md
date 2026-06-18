@@ -1,97 +1,83 @@
-# 🔗 URL Shortener Service
+🔗 URL Shortener Service
 
-A clean, fast URL shortening API built with **ASP.NET Core** following **Clean Architecture** principles.
+A clean, fast URL shortening API built with **ASP.NET Core (.NET 6)**.
 
 ## ✨ Features
 
-- Shorten long URLs to compact, shareable links
-- Redirect via short code with high performance
-- RESTful API design
-- Persistent storage with Entity Framework Core
-- Input validation and error handling
+- Shorten long URLs to compact, shareable links.
+- Redirect via short code.
+- Persistent storage with Entity Framework Core (SQL Server).
+- API Documentation with Swagger.
 
-## 🏗️ Architecture
+## 🏗️ Architecture & Project Structure
+
+The project is structured into Core, Infrastructure, and Endpoints layers:
+
 
 ```
 ShortLink/
-├── ShortLink.API/          # Presentation layer — Controllers, Middleware
-├── ShortLink.Application/  # Use cases, DTOs, Interfaces
-├── ShortLink.Domain/       # Entities, Value Objects, Domain Logic
-└── ShortLink.Infrastructure/ # EF Core, Repositories, DB Context
+├── src/
+│   ├── 1.Core/
+│   │   ├── ShortLink.Domain/              # Core Entities (Link)
+│   │   ├── ShortLink.Contracts/           # Repository Interfaces (ILinkRepository)
+│   │   ├── ShortLink.ApplicationService/  # Business Logic (ManageLinkService)
+│   │   └── ShortLink.Utilities/           # Helpers (UrlHelper)
+│   ├── 2.Infra/
+│   │   └── ShortLink.Infra.SQL/           # EF Core DBContext, Migrations & Repositories
+│   └── 3.Endpoints/
+│       └── ShortLink/                     # ASP.NET Core Web API (Presentation)
+└── ShortLink.sln
 ```
-
-> Follows **Clean Architecture** — dependencies point inward, domain has zero external dependencies.
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| API | ASP.NET Core Web API |
-| ORM | Entity Framework Core |
-| Database | SQL Server / SQLite |
-| Testing | xUnit |
-| Docs | Swagger / OpenAPI |
+* **Framework:** .NET 6.0
+* **ORM:** Entity Framework Core 6.0.21
+* **Database:** SQL Server
+* **API Docs:** Swagger (Swashbuckle)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- .NET 8 SDK
-- SQL Server or SQLite
+
+* .NET 6 SDK
+* SQL Server
 
 ### Run Locally
 
+1. Clone the repository:
 ```bash
-git clone https://github.com/hadihamedian/generate_short_URL.git
+git clone [https://github.com/hadihamedian/generate_short_URL.git](https://github.com/hadihamedian/generate_short_URL.git)
 cd generate_short_URL/ShortLink
 
-# Update connection string in appsettings.json
-dotnet ef database update --project ShortLink.Infrastructure
-
-dotnet run --project ShortLink.API
 ```
 
-API will be available at `https://localhost:5001`  
-Swagger UI: `https://localhost:5001/swagger`
+
+2. Update the connection string or configuration in `src/3.Endpoints/ShortLink/appsettings.json`.
+3. Apply database migrations:
+```bash
+dotnet ef database update --project src/2.Infra/ShortLink.Infra.SQL --startup-project src/3.Endpoints/ShortLink
+
+```
+
+
+4. Run the Web API:
+```bash
+dotnet run --project src/3.Endpoints/ShortLink
+
+```
+
+
+
+Swagger UI will be available at: `http://localhost:5015/swagger` (or `https://localhost:7018/swagger`)
 
 ## 📡 API Endpoints
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/api/shortlink` | Create a short URL |
-| `GET` | `/{code}` | Redirect to original URL |
-| `GET` | `/api/shortlink/{code}` | Get link details |
-| `DELETE` | `/api/shortlink/{code}` | Delete a short link |
-
-### Example
-
-```http
-POST /api/shortlink
-Content-Type: application/json
-
-{
-  "originalUrl": "https://www.example.com/very/long/url/that/needs/shortening"
-}
-```
-
-```json
-{
-  "shortCode": "abc123",
-  "shortUrl": "https://yourdomain.com/abc123",
-  "originalUrl": "https://www.example.com/very/long/url/that/needs/shortening",
-  "createdAt": "2024-01-15T10:30:00Z"
-}
-```
-
-## 🧪 Running Tests
-
-```bash
-dotnet test
-```
-
-## 📄 License
-
-MIT License — feel free to use and modify.
+| Method | Endpoint | Query Param | Description |
+| --- | --- | --- | --- |
+| `POST` | `/api/Url/CreateShortUrl` | `url={longUrl}` | Generates a short URL token. |
+| `GET` | `/api/Url/GetFullUrlAndRedirect` | `url={token}` | Resolves the token and redirects to the original URL. |
 
 ---
 
-> Built by [Hadi Hamedian](https://github.com/hadihamedian) — Senior .NET Developer
+> Built by [Hadi Hamedian](https://www.google.com/search?q=https://github.com/hadihamedian) — Senior .NET Developer
