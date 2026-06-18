@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ShortLink.API.Middleware;
 using ShortLink.ApplicationService.ManageLink;
 using ShortLink.Contracts.DAL.ManageLink;
 using ShortLink.Infra.SQL;
@@ -39,7 +40,7 @@ app.UseCors(x => x
                .AllowCredentials());
 
 app.UseAuthorization();
-
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
